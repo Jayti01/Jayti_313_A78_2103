@@ -1,16 +1,16 @@
 <html>
   <head>
     <script language="javascript">
-      let numRows, numCols;
+      let numRows, numColumns;
 
       function createTable() {
-        numRows = parseInt(document.getElementById("rowsInput").value);
-        numCols = parseInt(document.getElementById("colsInput").value);
+        numRows = parseInt(document.getElementById("rows").value);
+        numColumns = parseInt(document.getElementById("cols").value);
 
         const table = document.createElement("table");
         for (let i = 0; i < numRows; i++) {
           const row = table.insertRow();
-          for (let j = 0; j < numCols; j++) {
+          for (let j = 0; j < numColumns; j++) {
             const cell = row.insertCell();
             cell.appendChild(
               document.createTextNode(`Row ${i + 1},Col ${j + 1} `)
@@ -36,7 +36,7 @@
           const cell = rows[i].insertCell();
           cell.appendChild(document.createTextNode(`New Column`));
         }
-        numCols += 1;
+        numColumns += 1;
       }
 
       function addNewRow() {
@@ -44,13 +44,13 @@
         if (!table) return;
 
         const row = table.insertRow();
-        for (let i = 0; i < numCols; i++) {
+        for (let i = 0; i < numColumns; i++) {
           const cell = row.insertCell();
           cell.appendChild(document.createTextNode(`New Row, Col ${i + 1} `));
         }
       }
 
-      function hideInputsx() {
+      function hideUserInputs() {
         const inputs = document.querySelectorAll("input");
         const spans = document.querySelectorAll("span");
         for (let i = 0; i < inputs.length; i++) {
@@ -63,15 +63,15 @@
   <body>
     <font size="8" color="green">Final test lab</font><br /><br />
     <span> Enter number of rows: </span>
-    <input type="text" id="rowsInput" /><br /><br />
+    <input type="text" id="rows" /><br /><br />
     <span> Enter number of columns: </span>
-    <input type="text" id="colsInput" /><br /><br />
+    <input type="text" id="cols" /><br /><br />
 
-    <button id="b1" onclick="createTable()">Generate Table</button
+    <button id="generateButton" onclick="createTable()">Generate Table</button
     ><br /><br />
 
-    <button id="b2" onclick="addNewColumn()">Add Column</button>
+    <button id="addColumnButton" onclick="addNewColumn()">Add Column</button>
 
-    <button id="b3" onclick="addNewRow()">Add Row</button>
+    <button id="addRowButton" onclick="addNewRow()">Add Row</button>
   </body>
 </html>
